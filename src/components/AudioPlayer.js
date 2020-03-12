@@ -10,7 +10,7 @@ class AudioPlayer extends React.Component {
       <div>
         <audio src={this.props.src} controls autoPlay/>
       </div>
-    );
+    )
   }
 }
 

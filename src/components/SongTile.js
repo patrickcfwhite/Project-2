@@ -5,8 +5,8 @@ import AudioPlayer from './AudioPlayer'
 
 class SongTile extends React.Component {
   
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       data: {
         data: null,
@@ -16,15 +16,15 @@ class SongTile extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const search = ['green day', 'american idiot']
-    axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=artist:"${search[0]}" track:"${search[1]}"&limit=1`)
-      .then(res => {
-        this.setState({ data: res.data })
-        console.log(this.state.data)
-      })
-      .catch(err => console.error(err))
-  }
+  // componentDidMount() {
+  //   const search = this.props.search
+  //   axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=artist:"${search[0]}" track:"${search[1]}"&limit=1`)
+  //     .then(res => {
+  //       this.setState({ data: res.data })
+  //       console.log(this.state.data)
+  //     })
+  //     .catch(err => console.error(err))
+  // }
 
   render() {
     const { data } = this.state.data

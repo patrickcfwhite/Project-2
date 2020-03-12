@@ -3,18 +3,21 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Home from './components/Home'
-import SongTile from './components/Search'
+import NavBar from './components/NavBar'
+import SongTile from './components/SongTile'
+import Results from './components/Results'
 
 import 'bulma'
 import './styles/style.scss'
 
 const App = () => (
   <BrowserRouter>
-    {/* <NavBar /> */}
+    <NavBar />
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route exact path='/search' component={SongTile}/>
-      <Route />
+      <Route exact path='/search' component={Results} />
+      <Route exact path='/birthday' component={Results} />
+      <Route exact path='/results' component={Results} />
       <Route />
     </Switch>
   </BrowserRouter>
