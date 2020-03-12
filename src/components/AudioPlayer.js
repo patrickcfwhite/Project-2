@@ -8,7 +8,7 @@ class AudioPlayer extends React.Component {
   render() {
     return (
       <div>
-        <audio src={this.props.src} controls autoPlay/>
+        <audio src={this.props.src} controls />
       </div>
     )
   }

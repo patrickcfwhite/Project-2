@@ -1,20 +1,10 @@
 import React from 'react'
-import axios from 'axios'
+//ßimport axios from 'axios'
 import AudioPlayer from './AudioPlayer'
 
 
-class SongTile extends React.Component {
-  
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: {
-        data: null,
-        total: '',
-        next: ''
-      }
-    }
-  }
+const SongTile = ({ data }) => {
+
 
   // componentDidMount() {
   //   const search = this.props.search
@@ -25,24 +15,26 @@ class SongTile extends React.Component {
   //     })
   //     .catch(err => console.error(err))
   // }
-
-  render() {
-    const { data } = this.state.data
-    if (data === null) return null
-    const artist = data[0].artist.name
-    const artistImage = data[0].artist.picture_big
-    const title = data[0].title_short
-    const songPreview = data[0].preview
-    console.log(data)
-    return <div>
-      <h1>Artist: {artist}</h1>
-      <h2>Song Title: {title}</h2>
-      <img src={artistImage}/>
-      <AudioPlayer src={songPreview} />
-    </div>
-  } 
-
-
+  console.log(data)
+  if (data === null) return null
+  const artist = data.artist.name
+  const artistImage = data.artist.picture_big
+  const title = data.title_short
+  const songPreview = data.preview
+  return (
+    <section className="section">
+      <div className="container">
+        <div className="column">
+          <h1 className="title">Artist: {artist}</h1>
+          <h2 className="subtitle">Song Title: {title}</h2>
+          <figure className="image">
+            <img src={artistImage} />
+          </figure>
+          <AudioPlayer src={songPreview} />
+        </div>
+      </div>
+    </section>
+  )
 }
 
 export default SongTile

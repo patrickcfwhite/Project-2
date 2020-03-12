@@ -2,16 +2,16 @@ import React from 'react'
 import SongTile from './SongTile'
 
 
-const Results = () => {
-  const songPairs = [['Artist 1', 'Song 1'],['Artist 2', 'Song 2'],['Artist 3','Song 3']]
+const Results = ({ data }) => {
+  
   return (
     <section className="section">
       <div className="container">
         <div className="columns is-multiline">
-          {songPairs.map((x, index) => {
+          {data.map((data, index) => {
             return (
-              // <SongTile key={index} search={x}/>
-              <h2 key={index}>{x}</h2>
+              <SongTile key={index} data={data}/>
+              // <h2 key={index}>{x}</h2>
             )
           })}
         </div>
