@@ -4,9 +4,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Home from './components/Home'
 import NavBar from './components/NavBar'
-import SongTile from './components/SongTile'
 import Results from './components/Results'
 import SearchPage from './components/SearchPage'
+import Birthday from './components/Birthday'
 
 import 'bulma'
 import './styles/style.scss'
@@ -17,7 +17,7 @@ const App = () => (
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route exact path='/search' component={SearchPage} />
-      <Route exact path='/birthday' component={Results} />
+      <Route exact path='/birthday' component={Birthday} />
       <Route exact path='/results' component={Results} />
       <Route />
     </Switch>
