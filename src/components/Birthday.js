@@ -63,7 +63,7 @@ class Birthday extends React.Component {
       <section className="Hero hero is-fullheight">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title has-text-centered">Enter Your Birthday below</h1>
+            <h1 className="title is-1 has-text-centered">Enter Your Birthday below</h1>
             <form className="form" onSubmit={(event) => this.handleSubmit(event)}>
               <div className="field is-horizontal">
                 <div className="field-body">

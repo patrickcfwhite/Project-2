@@ -24,7 +24,7 @@ class SearchPage extends React.Component {
     event.preventDefault()
     console.log(event)
     const { query } = this.state
-    axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q="${query}"&limit=10`)
+    axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q="${query}"&limit=24`)
       .then(res => {
         this.setState({ data: res.data.data })
         console.log(this.state.data)
@@ -35,10 +35,13 @@ class SearchPage extends React.Component {
   render() {
     const { value, data } = this.state
     return (
-      <section className="section SearchPage">
-        <div className="container">
-          <SearchBar value={value} handleSubmit={(event)=> this.handleSubmit(event)} handleChange={(event)=> this.handleChange(event)} />
-          <Results data={data} />
+      <section className="Hero hero is-fullheight">
+        <div className="hero-body">
+          <div className="container">
+          
+            <SearchBar value={value} handleSubmit={(event) => this.handleSubmit(event)} handleChange={(event) => this.handleChange(event)} />
+            <Results data={data} />
+          </div>
         </div>
       </section>
     )

@@ -5,7 +5,7 @@ import SongTile from './SongTile'
 const Results = ({ data }) => {
   console.log(data, 'results')
   return (
-    <section className="section">
+    <section className="section Results">
       <div className="container">
         <div className="columns is-mobile is-multiline">
           {data.filter(x => !!x).map((data, index) => {

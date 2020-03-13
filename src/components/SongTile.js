@@ -26,7 +26,7 @@ const SongTile = ({ data }) => {
   console.log(data, 'songtile')
   if (data === null) return null
   const artist = data.artist.name
-  const artistImage = data.artist.picture_big
+  const artistImage = data.album.cover_big
   const title = data.title_short
   const songPreview = data.preview
   return (
@@ -46,8 +46,8 @@ const SongTile = ({ data }) => {
           </figure>
           {clicked ? <audio src={songPreview} autoPlay ></audio> : null }
         </div>
-        <h2 className="title">{artist}</h2>
-        <h2 className="subtitle">{title}</h2>
+        <h2 className="offwhite title is-4">{artist}</h2>
+        <h2 className="offwhite subtitle is-5">{title}</h2>
 
         
       

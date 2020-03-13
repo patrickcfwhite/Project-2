@@ -19,7 +19,7 @@
 .SongCard {
   border-radius: 4px;
   border: solid black 2px;
-  padding: 0px;
+  background-color: rgba(224, 224, 224, 0.767);
 }
 
 .card-image {
@@ -42,4 +42,11 @@
 
 .opaque {
   opacity: 0.5;
+}
+
+.card {
+  background-color: rgba(230, 230, 230, 0.856);
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
 }

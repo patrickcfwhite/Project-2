@@ -9,25 +9,24 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar">
+      <nav className="navbar is-primary">
         <div className="container">
-          <div className="navbar-brand">
+          {/* <div className="navbar-brand"> */}
+          <div className="navbar-start">
             <Link className="navbar-item" to="/">Home</Link>
-            <a href="">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
           </div>
+          {/* <a href=""> */}
+          {/* <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a> */}
+          {/* </div> */}
           <div className="navbar-end">
             <div className="navbar-item">
               <Link to='/search'>Search</Link>
             </div>
             <div className="navbar-item">
               <Link to='/birthday'>Birthday Playlist</Link>
-            </div>
-            <div className="navbar-item">
-              <Link to='/extra'>Extra</Link>
             </div>
           </div>
         </div>
