@@ -1,10 +1,10 @@
 function getBirthdays(y,m,d) {
   const bdayArray = []
-  let x = new Date(y, m-1, d)
+  let x = new Date(y, m - 1, d)
   while (x < Date.now()) {
-    bdayArray.push(`${d}-${m}-${y}`)
+    bdayArray.push(`${y}-${m}-${d}`)
     y++
-    x = new Date(y, m-1, d)
+    x = new Date(y, m - 1, d)
 
   }
   return bdayArray

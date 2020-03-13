@@ -1,52 +1,65 @@
 import React from 'react'
 import scripts from '../lib/scripts'
 import findNumberOnes from '../lib/lib'
+import axios from 'axios'
 
 class Birthday extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      data: {
+      birthdayInput: {
         date: '',
         month: '',
         year: ''
-      }
+
+      },
+      birthdayArray: [],
+      data: []
     }
   }
 
   handleChange(event) {
     console.log(event)
     const { name, value } = event.target
-    const data = { ...this.state.data, [name]: value }
-    this.setState({ data })
+    const data = { ...this.state.birthdayInput, [name]: value }
+    this.setState({ birthdayInput: data })
   }
 
   handleSubmit(event) {
-    const { date, month, year } = this.state.data
+    const { date, month, year } = this.state.birthdayInput
     event.preventDefault()
-    const bdays = scripts.getBirthdays(year,month,date)
+    const bdays = scripts.getBirthdays(year, month, date)
     const bdayArray = Array.from(bdays)
-    const bdayNumberOnes = findNumberOnes(bdayArray)
+    const searchSongs = findNumberOnes(bdayArray)
 
-    console.log(bdayNumberOnes)
+    console.log(searchSongs)
 
-    // event.preventDefault()
-    // console.log(event)
-    // const { query } = this.state
-    // axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q="${query}"&limit=10`)
-    //   .then(res => {
-    //     this.setState({ data: res.data.data })
-    //     console.log(this.state.data)
-    //   })
-    //   .catch(err => console.error(err))
+    const dataUpdate = []
+
+    const getData = async () => { 
+      for (let i = 0; i < searchSongs.length; i++) {
+        await axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=artist:"${searchSongs[i]['artist']}" track:"${searchSongs[i]['track']}"&limit=1`)
+          .then(res => {
+            const temp = res.data.data[0]
+            dataUpdate.push(temp)
+          })
+          .catch(err => console.error(err))
+      }
+    }
+    getData()
+
+    console.log('Bday songs: ', searchSongs, 'Deezer Info: ', dataUpdate)
+
+    //this.setState({ data: dataUpdate, birthdayArray: searchSongs })
+    
   }
 
 
   render() {
     const { date, month, year } = this.state
     return (
-      <section className="hero is-fullheight">
+      <section className="Hero hero is-fullheight">
         <div className="hero-body">
           <div className="container">
             <h1 className="title has-text-centered">Enter Your Birthday below</h1>
@@ -91,9 +104,7 @@ class Birthday extends React.Component {
                   </div>
                   <button className='button is-primary'>Create Playlist</button>
                 </div>
-                
               </div>
-              
             </form>
           </div>
         </div>
