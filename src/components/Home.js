@@ -1,6 +1,7 @@
 import React from 'react'
+
 const Home = () => (
-  <section className="hero is-fullheight">
+  <section className="Hero hero is-fullheight">
     <div className="hero-body">
       <div className="container">
         <h1 className="title has-text-centered">Birthday Playlist</h1>
@@ -9,4 +10,5 @@ const Home = () => (
     </div>
   </section>
 )
+
 export default Home

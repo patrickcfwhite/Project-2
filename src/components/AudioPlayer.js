@@ -5,10 +5,12 @@ class AudioPlayer extends React.Component {
     super(props)
     this.state = {}
   }
+  
+
   render() {
     return (
       <div>
-        <audio src={this.props.src} controls />
+        <audio src={this.props.src} />
       </div>
     )
   }

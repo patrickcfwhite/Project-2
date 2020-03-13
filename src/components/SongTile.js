@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 //ßimport axios from 'axios'
-import AudioPlayer from './AudioPlayer'
 
 
 const SongTile = ({ data }) => {
@@ -15,25 +14,46 @@ const SongTile = ({ data }) => {
   //     })
   //     .catch(err => console.error(err))
   // }
-  console.log(data)
+  const [ hovered, setHovered ] = useState(false)
+  const [ clicked, setClicked ] = useState(false)
+  const toggleHover = () => setHovered(!hovered)
+  const toggleClicked = () => setClicked(!clicked)
+
+  const handleClick = () => {
+    toggleClicked()
+  }
+
+  console.log(data, 'songtile')
   if (data === null) return null
   const artist = data.artist.name
   const artistImage = data.artist.picture_big
   const title = data.title_short
   const songPreview = data.preview
   return (
-    <section className="section">
-      <div className="container">
-        <div className="column">
-          <h1 className="title">Artist: {artist}</h1>
-          <h2 className="subtitle">Song Title: {title}</h2>
+    <div className="SongCard column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+      <div className="card">
+        <div 
+          className={clicked ? 'card-image pause' : 'card-image'}
+        >
           <figure className="image">
-            <img src={artistImage} />
+            <img
+              src={artistImage}
+              className={hovered ? 'Image opaque' : 'Image'} 
+              onMouseEnter={toggleHover}
+              onMouseLeave={toggleHover}
+              onClick={() => handleClick()}
+            />
           </figure>
-          <AudioPlayer src={songPreview} />
+          {clicked ? <audio src={songPreview} autoPlay ></audio> : null }
         </div>
+        <h2 className="title">{artist}</h2>
+        <h2 className="subtitle">{title}</h2>
+
+        
+      
+        {/* <AudioPlayer src={songPreview} /> */}
       </div>
-    </section>
+    </div>
   )
 }
 

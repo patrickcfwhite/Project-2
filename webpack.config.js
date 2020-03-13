@@ -14,17 +14,21 @@ module.exports = {
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
       { test: /\.s(a|c)ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'] },
-      {
-        test: /\.(png|svg|jpe?g|gif)$/,
-        include: /images/,
+      { test: /\.(png|jpg|gif)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
-              name: '[name].[ext]',
-              outputPath: 'images/',
-              publicPath: 'images/'
+              limit: 8192
             }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader'
           }
         ]
       }

@@ -1,8 +1,45 @@
 .Hero {
-  .hero-body{
-  // background-image: url('../../images/bg.jpeg');
+  .hero-body {
+  background-image: url('https://i.imgur.com/1ZuDRPt.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
   }
+}
+
+.SearchPage {
+  background-image: url('https://i.imgur.com/1ZuDRPt.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.SongCard {
+  border-radius: 4px;
+  border: solid black 2px;
+  padding: 0px;
+}
+
+.card-image {
+  background-image: url('https://imgur.com/KxY8LgB.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.pause {
+  background-image: url('https://imgur.com/Kw7vtYr.jpg');
+}
+
+.Image {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s ease-in-out;
+}
+
+.opaque {
+  opacity: 0.5;
 }

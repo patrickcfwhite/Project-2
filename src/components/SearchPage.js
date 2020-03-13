@@ -35,10 +35,12 @@ class SearchPage extends React.Component {
   render() {
     const { value, data } = this.state
     return (
-      <>
-        <SearchBar value={value} handleSubmit={(event)=> this.handleSubmit(event)} handleChange={(event)=> this.handleChange(event)} />
-        <Results data={data} />
-      </>
+      <section className="section SearchPage">
+        <div className="container">
+          <SearchBar value={value} handleSubmit={(event)=> this.handleSubmit(event)} handleChange={(event)=> this.handleChange(event)} />
+          <Results data={data} />
+        </div>
+      </section>
     )
   }
 }

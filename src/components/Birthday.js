@@ -32,33 +32,34 @@ class Birthday extends React.Component {
     const bdays = scripts.getBirthdays(year, month, date)
     const bdayArray = Array.from(bdays)
     const searchSongs = findNumberOnes(bdayArray)
-
     console.log(searchSongs)
 
     const dataUpdate = []
 
-    const getData = async () => { 
-      for (let i = 0; i < searchSongs.length; i++) {
-        await axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=artist:"${searchSongs[i]['artist']}" track:"${searchSongs[i]['track']}"&limit=1`)
-          .then(res => {
-            const temp = res.data.data[0]
-            dataUpdate.push(temp)
-          })
-          .catch(err => console.error(err))
-      }
+    const promises = []
+
+    for (let i = 0; i < searchSongs.length; i++) {
+      promises.push(axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=artist:"${searchSongs[i]['artist']}" track:"${searchSongs[i]['track']}"&limit=1`)
+        .then(res => {
+          return res.data.data[0]
+        })
+        .catch(err => console.error(err)))
     }
-    getData()
+    
+    Promise.all(promises)
+      .then((results) => {
+        this.setState({ data: results, birthdayArray: searchSongs })
+        this.props.history.push('/playlist', { data: results, birthdayArray: searchSongs }  )
+      })
 
-    console.log('Bday songs: ', searchSongs, 'Deezer Info: ', dataUpdate)
-
-    //this.setState({ data: dataUpdate, birthdayArray: searchSongs })
     
   }
 
 
   render() {
-    const { date, month, year } = this.state
+    const { date, month, year, data } = this.state
     return (
+      <>
       <section className="Hero hero is-fullheight">
         <div className="hero-body">
           <div className="container">
@@ -109,7 +110,7 @@ class Birthday extends React.Component {
           </div>
         </div>
       </section>
-
+      </>
     )
   }
 

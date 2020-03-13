@@ -3,16 +3,13 @@ import SongTile from './SongTile'
 
 
 const Results = ({ data }) => {
-  
+  console.log(data, 'results')
   return (
     <section className="section">
       <div className="container">
-        <div className="columns is-multiline">
-          {data.map((data, index) => {
-            return (
-              <SongTile key={index} data={data}/>
-              // <h2 key={index}>{x}</h2>
-            )
+        <div className="columns is-mobile is-multiline">
+          {data.filter(x => !!x).map((data, index) => {
+            return <SongTile key={index} data={data} />
           })}
         </div>
       </div>
