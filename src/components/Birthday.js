@@ -50,9 +50,7 @@ class Birthday extends React.Component {
       .then((results) => {
         this.setState({ data: results, birthdayArray: searchSongs })
         this.props.history.push('/playlist', { data: results, birthdayArray: searchSongs }  )
-      })
-
-    
+      })    
   }
 
 
