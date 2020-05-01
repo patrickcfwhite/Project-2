@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack-dev-server --mode=development"
+    "serve": "webpack-dev-server --mode=development",
+    "build": "webpack -p",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -22,13 +24,14 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^3.0.0",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "bulma": "^0.7.5",
+    "gh-pages": "^2.2.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "react": "^16.7.0",
