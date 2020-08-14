@@ -1,8 +1,19 @@
 // import moment from 'moment'
 const moment = require('moment')
 
+function getBirthdays(y,m,d) {
+  const bdayArray = []
+  let x = new Date(y, m - 1, d)
+  while (x < Date.now()) {
+    m < 10 && d < 10 ? bdayArray.push(`${y}-0${m}-0${d}`) : d < 10 ? bdayArray.push(`${y}-${m}-0${d}`) : m < 10 ? bdayArray.push(`${y}-0${m}-${d}`) : bdayArray.push(`${y}-${m}-${d}`)
+    y++
+    x = new Date(y, m - 1, d)
 
-export default function findNumberOnes(birthdays) {
+  }
+  return bdayArray
+}
+
+function findNumberOnes(birthdays) {
   
   const numberOnes = {
     '1952-11-14': { 'track': 'here in my heart', 'artist': 'al martino', 'weeks': 9 },
@@ -1472,5 +1483,11 @@ export default function findNumberOnes(birthdays) {
   }
   return arr
 }
+
+// const beckysBdays = getBirthdays(1990,7,14)
+const lauriesBdays = getBirthdays(1987,9,3)
+// console.log(beckysBdays)
+
+console.log(findNumberOnes(lauriesBdays))
 
 //console.log(findNumberOnes(['07-12-1987', '07-12-1988', '07-12-1989']))
